@@ -1,0 +1,278 @@
+<html>
+	<head>
+		<title>Grade Calculator App</title>
+		<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+		<link href="index.css" rel="stylesheet">
+	</head>
+
+	<body>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<div class="intro" id="test"> 
+			<h1>Grade Calculator</h1>
+			<p> Enter your grades along with their weights in the boxes below in order to calculate your current grade </p>
+		</div>
+		<div class="submit">
+			<form id="myform" action="results.html">
+				<table class="table">
+					<tr>
+						<td> 
+							<b> Assignment </b>
+						</td>
+						<td> 
+							<b> Grade </b>
+						</td>
+						<td>
+							<b> Weight </b>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							1
+						</td>
+						<td> 
+							<input type="text" id="grade1" value size="2">
+						</td>
+						<td>
+							<input type="text" id="weight1" value size="2">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							2
+						</td>
+						<td> 
+							<input type="text" id="grade2" value size="2">
+						</td>
+						<td>
+							<input type="text" id="weight2" value size="2">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							3
+						</td>
+						<td> 
+							<input type="text" id="grade3" value size="2">
+						</td><td>
+							<input type="text" id="weight3" value size="2">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							4
+						</td>
+						<td> 
+							<input type="text" id="grade4" value size="2">
+						</td><td>
+							<input type="text" id="weight4" value size="2">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							5
+						</td>
+						<td> 
+							<input type="text" id="grade5" value size="2">
+						</td><td>
+							<input type="text" id="weight5" value size="2">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							6
+						</td>
+						<td> 
+							<input type="text" id="grade6" value size="2">
+						</td><td>
+							<input type="text" id="weight6" value size="2">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							7
+						</td>
+						<td> 
+							<input type="text" id="grade7" value size="2">
+						</td><td>
+							<input type="text" id="weight7" value size="2">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							8
+						</td>
+						<td> 
+							<input type="text" id="grade8" value size="2">
+						</td><td>
+							<input type="text" id="weight8" value size="2">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							9
+						</td>
+						<td> 
+							<input type="text" id="grade9" value size="2">
+						</td><td>
+							<input type="text" id="weight9" value size="2">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							10
+						</td>
+						<td> 
+							<input type="text" id="grade10" value size="2">
+						</td><td>
+							<input type="text" id="weight10" value size="2">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							11
+						</td>
+						<td> 
+							<input type="text" id="grade11" value size="2">
+						</td><td>
+							<input type="text" id="weight11" value size="2">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							12
+						</td>
+						<td> 
+							<input type="text" id="grade12" value size="2">
+						</td><td>
+							<input type="text" id="weight12" value size="2">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							13
+						</td>
+						<td> 
+							<input type="text" id="grade13" value size="2">
+						</td><td>
+							<input type="text" id="weight13" value size="2">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							14
+						</td>
+						<td> 
+							<input type="text" id="grade14" value size="2">
+						</td><td>
+							<input type="text" id="weight14" value size="2">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							15
+						</td>
+						<td> 
+							<input type="text" id="grade15" value size="2">
+						</td><td>
+							<input type="text" id="weight15" value size="2">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							16
+						</td>
+						<td> 
+							<input type="text" id="grade16" value size="2">
+						</td><td>
+							<input type="text" id="weight16" value size="2">
+						</td>
+					</tr>
+				</table>
+				<input type="submit" id="submit" value="Submit"/>
+			</form>
+
+			<script type="text/javascript">
+
+			/**
+			$('#submit').click(function() {
+				var items = [];
+				var obj = {};
+				$('#myform :text').each(function() {
+					obj[this.id] = this.value;
+				});
+				items.push(obj);
+				console.log(items[0]);
+			}) */
+
+			
+			// Get each of the values out of the input boxes
+			$('#submit').click(function () {
+   				var inputVals = [];
+    			$('#myform :input[type="text"]').each(function () {
+        			var values = $(this).val();
+
+        			// If value exists
+			        if (values) {
+			        	// Here I do parseInt when I push because I am currently pushing text values
+			        	// I want to push integer values, so I convert to int
+			        	inputVals.push(parseInt(values));
+			        }
+			    }); 
+
+    			console.log(inputVals);
+
+    			// Now to separate the grades and weights.
+    			// They should be next to each other if the user inputted them correctly.
+    			// So I am going to create two arrays
+    			var grades = [];
+    			var weights = [];
+
+    			// Keep track of inputVals index
+    			var i = 0;
+    			// Keep track of grades index
+    			var g = 0;
+    			// Keep track of weights index
+    			var w = 0;
+
+    			// Put values in respective arrays
+    			while (i < inputVals.length) {
+    				if (i%2 == 0) {
+    					grades[g] = inputVals[i];
+    					g++;
+    					i++;
+    				}
+    				else {
+    					weights[w] = inputVals[i];
+    					w++
+    					i++;
+    				}
+    			}
+
+    			//console.log(grades);
+    			//console.log(weights);
+
+    			// Used to sum the grade
+    			var sum = 0;
+    			// Used to get the grade so far
+    			var sumOfPercents = 0;
+
+    			for (i = 0; i < grades.length; i++) {
+    				sum += grades[i] * weights[i] * .01;
+    				sumOfPercents += weights[i] * .01;
+    			}
+
+    			var currentGrade = (sum/sumOfPercents);
+    			//console.log(currentGrade);
+
+    			// Set x to save the current grade for the results page
+    			localStorage.setItem("x", currentGrade);
+
+			});
+
+
+		</script>
+
+
+		</div>
+	</body>
+</html>
