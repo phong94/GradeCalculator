@@ -8,14 +8,55 @@
 	<body>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<div class="intro">
-			<h1>Results</h1>
-			<p>Your current grade is: </p>
+			<h1>Results!</h1>
+			<p id="curGrade">Your current grade is: </p>
+			<p id="maxGrade">The maximum possible grade you will receive in this class is: </p>
+			<p>In order to receive 100% in the class you need to score an average of <b id="scoreHunnid"></b> on the rest of your assignments.</p>
+			<p>In order to receive 90% in the class you need to score an average of <b id="scoreNinety"></b> on the rest of your assignments.</p>
+			<p>In order to receive 80% in the class you need to score an average of <b id="scoreEighty"></b> on the rest of your assignments.</p>
+			<p>In order to receive 70% in the class you need to score an average of <b id="scoreSeventy"></b> on the rest of your assignments.</p>
+			<p>In order to receive 60% in the class you need to score an average of <b id="scoreSixty"></b> on the rest of your assignments.</p>
 		</div>
 
 			<script type="text/javascript">
-				var x = localStorage.x
+				/* User's current grade */
+				var currentGrade = 0;
+				currentGrade = localStorage.currentGrade;
+				currentGrade = (currentGrade*1).toFixed(2);
+				$('.intro #curGrade').append(currentGrade + "%");
 
-				$('.intro p').append(x + "%");
+				/* User's maximum possible grade */
+				var maxGrade = 0;
+				var sumOfPercents = localStorage.sumOfPercents;
+				var maxGrade = ((currentGrade*sumOfPercents) + (100-(sumOfPercents*100))).toFixed(2);
+				$('.intro #maxGrade').append(maxGrade + "%");
+
+				var scoreHundred = 0;
+				var leftoverWeight = 1 - sumOfPercents;
+				scoreHundred = ((100 - (currentGrade*sumOfPercents))/leftoverWeight).toFixed(2);
+				$('.intro #scoreHunnid').append(scoreHundred + "%");
+
+				/* Score user needs to get to receive a 90 */
+				var scoreNinety = 0;
+				var leftoverWeight = 1 - sumOfPercents;
+				scoreNinety = ((90 - (currentGrade*sumOfPercents))/leftoverWeight).toFixed(2);
+				$('.intro #scoreNinety').append(scoreNinety + "%");
+
+				var scoreEighty = 0;
+				var leftoverWeight = 1 - sumOfPercents;
+				scoreEighty = ((80 - (currentGrade*sumOfPercents))/leftoverWeight).toFixed(2);
+				$('.intro #scoreEighty').append(scoreEighty + "%");
+
+				var scoreSeventy = 0;
+				var leftoverWeight = 1 - sumOfPercents;
+				scoreSeventy = ((70 - (currentGrade*sumOfPercents))/leftoverWeight).toFixed(2);
+				$('.intro #scoreSeventy').append(scoreSeventy + "%");
+
+				var scoreSixty = 0;
+				var leftoverWeight = 1 - sumOfPercents;
+				scoreSixty = ((60 - (currentGrade*sumOfPercents))/leftoverWeight).toFixed(2);
+				$('.intro #scoreSixty').append(scoreSixty + "%");
+				
 			</script>
 		</body>
 	</head>
