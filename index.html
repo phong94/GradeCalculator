@@ -255,11 +255,17 @@
     			}
     			var currentGrade = (sum/sumOfPercents);
     			//console.log(currentGrade);
+
     			// Set currentGrade to save the current grade for the results page
     			console.log(sumOfPercents);
     			localStorage.setItem("currentGrade", currentGrade);
     			localStorage.setItem("sumOfPercents", sumOfPercents);
     			
+
+    			// Set x to save the current grade for the results page
+    			localStorage.setItem("x", currentGrade);
+
+    		
 			});
 		</script>
 
